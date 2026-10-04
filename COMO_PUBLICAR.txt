@@ -1,0 +1,17 @@
+UMA NOVA VIDA — PUBLICAÇÃO
+
+O site estático não usa Mercado Pago, banco de dados ou servidor de pagamentos.
+
+Antes de publicar:
+1. Abra config.js.
+2. Troque PIX_KEY pela chave Pix oficial.
+3. Troque WHATSAPP_NUMBER pelo WhatsApp que receberá os comprovantes.
+   Formato: 55 + DDD + número, somente dígitos.
+4. Salve e envie todos os arquivos para o GitHub Pages.
+
+Fluxo:
+- ingresso: R$ 15,00
+- quantidade e total automáticos
+- pagamento direto por Pix
+- botão abre o WhatsApp com quantidade e total
+- comprovante é enviado pelo comprador no WhatsApp

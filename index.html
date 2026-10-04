@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uma Nova Vida — Yuri / MecØ</title>
+<meta name="description" content="Show Especial Uma Nova Vida — Yuri / MecØ">
+<link rel="stylesheet" href="style.css"><script src="config.js"></script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#inicio">MecØ <span>♛</span></a>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#musicas">Músicas</a>
+    <a href="#show">O Show</a>
+    <a href="#ingressos">Ingressos</a>
+  </nav>
+  <a class="ticket-mini" href="#ingressos">R$ 15 • Ingressos</a>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="smoke pink"></div><div class="smoke blue"></div>
+  <div class="hero-copy">
+    <p class="eyebrow">COM MUITO</p>
+    <h1>Música e <span>Esperança</span></h1>
+    <p class="intro">Mais que um evento, é uma celebração do ciclo. Uma nova vida está chegando para compartilhar esse momento especial, através da minha música, do meu coração e daquilo que eu acredito.</p>
+    <div class="signature">Yuri / MecØ ♛</div>
+  </div>
+  <div class="hero-center">
+    <div class="silhouette"></div>
+    <div class="question">Menino ou<br>Menina?</div>
+    <div class="hero-note">Tanto faz...<br>o importante é<br>que venha com<br><b>muito amor!</b> ♡</div>
+  </div>
+</section>
+
+<section class="info" id="show">
+  <div class="music-side">
+    <p class="eyebrow">MÚSICAS DO SHOW</p>
+    <ol>
+      <li>Uma Nova Vida Está Chegando</li>
+      <li>Dinheiro Não Importa</li>
+      <li>A Verdade</li>
+      <li>Deixa Eu Brincar</li>
+      <li>Te Amo Irmão</li>
+    </ol>
+  </div>
+  <div class="info-item">
+    <span class="ico">▣</span>
+    <div><small>DATA</small><strong>No dia que chegar<br>essa nova vida</strong></div>
+  </div>
+  <div class="info-item">
+    <span class="ico">♬</span>
+    <div><small>GÊNERO</small><strong>Não é pagode.<br>É sentimento, é música, é vida.</strong></div>
+  </div>
+  <div class="dream">Uma nova vida<br>também é<br>uma nova chance<br>de sonhar. <i>♡</i></div>
+</section>
+
+<section id="musicas" class="songs">
+  <div>
+    <p class="eyebrow">CADA MÚSICA CONTA UMA PARTE</p>
+    <h2>Uma história<br><span>em cinco momentos.</span></h2>
+  </div>
+  <div class="song-grid">
+    <article><b>01</b><strong>Uma Nova Vida Está Chegando</strong><small>Abertura</small></article>
+    <article><b>02</b><strong>Dinheiro Não Importa</strong><small>Reflexão</small></article>
+    <article><b>03</b><strong>A Verdade</strong><small>Sentimento</small></article>
+    <article><b>04</b><strong>Deixa Eu Brincar</strong><small>Esperança</small></article>
+    <article><b>05</b><strong>Te Amo Irmão</strong><small>Encerramento</small></article>
+  </div>
+</section>
+
+<section id="ingressos" class="tickets">
+  <div class="ticket-card">
+    <p class="eyebrow">INGRESSO PRINCIPAL</p>
+    <h2>R$ <span>15</span>,00</h2>
+    <p>Garanta sua entrada para o Show Especial Uma Nova Vida.</p>
+    <div class="qty">
+      <button onclick="changeQty(-1)">−</button>
+      <strong id="qty">1</strong>
+      <button onclick="changeQty(1)">+</button>
+    </div>
+    <p class="total">Total: <strong id="total">R$ 15,00</strong></p>
+    <button class="buy" onclick="buy()">COMPRAR INGRESSO</button>
+    <p id="status" class="status">Pagamento por Pix • comprovante pelo WhatsApp • sem Mercado Pago.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-logo">MecØ ♛</div>
+  <p>OBRIGADO POR FAZER PARTE<br>DESSE MOMENTO TÃO ESPECIAL!</p>
+  <strong>YURI / MECØ</strong>
+  <div class="social">◎　◉　♪　◌</div>
+</footer>
+
+<script>
+let qty=1;
+function money(v){return 'R$ '+v.toFixed(2).replace('.',',')}
+function changeQty(n){
+  qty=Math.max(1,qty+n);
+  document.getElementById('qty').textContent=qty;
+  document.getElementById('total').textContent=money(qty*EVENT_CONFIG.TICKET_PRICE);
+}
+function buy(){
+  const key=EVENT_CONFIG.PIX_KEY, number=EVENT_CONFIG.WHATSAPP_NUMBER;
+  if(key.includes('COLOQUE_') || number.includes('000000')){
+    document.getElementById('status').textContent='Falta configurar a chave Pix e o WhatsApp em config.js.';
+    return;
+  }
+  const total=money(qty*EVENT_CONFIG.TICKET_PRICE);
+  const text=`Olá! Quero comprar ${qty} ingresso(s) do ${EVENT_CONFIG.EVENT_NAME}. Total: ${total}. Vou enviar o comprovante do Pix por aqui.`;
+  window.open(EVENT_CONFIG.WHATSAPP_GROUP,'_blank');
+}
+document.getElementById('total').textContent=money(EVENT_CONFIG.TICKET_PRICE);
+</script>
+</body>
+</html>
